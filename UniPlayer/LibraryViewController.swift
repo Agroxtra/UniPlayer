@@ -39,6 +39,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        self.tableView.tableFooterView = UIView()
         self.initMusic()
         
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -178,9 +179,12 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .default, reuseIdentifier: "musicCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "musicCell")
         cell.textLabel?.text = MusicLibrary.library[indexPath.row].title
         cell.detailTextLabel?.text = MusicLibrary.library[indexPath.row].artist
+        cell.imageView?.image = MusicLibrary.library[indexPath.row].artwork
+        cell.imageView?.layer.masksToBounds = true
+        cell.imageView?.layer.cornerRadius = 10
         
         if let c = self.currentIndex,
             indexPath.row == c
