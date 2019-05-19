@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -92,11 +92,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 curr -= 1
                 self.musicPlayer = try? AVAudioPlayer(contentsOf: MusicLibrary.library[curr].url)
                 self.currentIndex = curr
+                self.musicPlayer?.play()
                 return .success
             }
             return .commandFailed
         }
         
+        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
+            if var curr = self.currentIndex {
+                self.musicPlayer?.stop()
+                curr = (curr + 1)%(MusicLibrary.library.count)
+                self.musicPlayer = try? AVAudioPlayer(contentsOf: MusicLibrary.library[curr].url)
+                self.currentIndex = curr
+                self.musicPlayer?.play()
+                return .success
+            }
+            return .commandFailed
+        }
         
     }
     
