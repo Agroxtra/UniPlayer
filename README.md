@@ -1,5 +1,5 @@
-# Uniplayer
----
+# UniPlayer
+
 ### An iOS music player for different sources
 
 ##### Currently working on:
