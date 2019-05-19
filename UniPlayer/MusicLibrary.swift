@@ -28,7 +28,7 @@ extension Music{
         url = path
         
         let playerItem = AVPlayerItem(url: path)
-        let metadataList = playerItem.asset.metadata as! [AVMetadataItem]
+        let metadataList = playerItem.asset.metadata
         
         var titleName : String?
         var artistName : String?
