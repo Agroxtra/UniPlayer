@@ -182,7 +182,11 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "musicCell")
         cell.textLabel?.text = MusicLibrary.library[indexPath.row].title
         cell.detailTextLabel?.text = MusicLibrary.library[indexPath.row].artist
-        cell.imageView?.image = MusicLibrary.library[indexPath.row].artwork
+        if let image = MusicLibrary.library[indexPath.row].artwork {
+            cell.imageView?.image = image
+        } else {
+            cell.imageView?.image = UIColor.white.image(CGSize(width: 128, height: 128))
+        }
         cell.imageView?.layer.masksToBounds = true
         cell.imageView?.layer.cornerRadius = 10
         
@@ -215,3 +219,12 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 }
 
+
+extension UIColor {
+    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { rendererContext in
+            self.setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
+    }
+}
