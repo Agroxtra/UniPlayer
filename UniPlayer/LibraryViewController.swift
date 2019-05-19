@@ -10,11 +10,15 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var musicPlayer : AVAudioPlayer?
+    var musicPlayer : AVAudioPlayer? {
+        didSet {
+            self.musicPlayer?.delegate = self
+        }
+    }
     var currentIndex: Int? {
         didSet {
             if let c = self.currentIndex,
@@ -29,7 +33,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    var isOnRepeat : Bool = true
+    var repeatType : MPRepeatType = .all
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +51,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // MARK: create readme file creates directory for App
         let file = AppFile()
-        _ = file.writeFile(containing: "Put all your mp3 files here and they will be recognized after relaunching the application. Then you can play them as you whish.", to: .Documents, withName: "readme.txt")
+        _ = file.writeFile(containing: "Put all your mp3 files here and they will be recognized after relaunching the application. Then you can play them as you wish.", to: .Documents, withName: "readme.txt")
         
         MusicLibrary.library.removeAll()
         
@@ -56,7 +60,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         for url in files {
             if url.isFileURL && url.pathExtension == "mp3" {
                 // MARK: add mp3 files to library, which is used for playing music
-                MusicLibrary.library.append(Music(artist: nil, url: url, title: url.lastPathComponent))
+                MusicLibrary.library.append(Music(path: url))
             }
         }
         DispatchQueue.main.async {
@@ -98,12 +102,15 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
                     p.pause()
                     p.currentTime = 0
                     p.play()
+                    self.updateNowPlaying()
                     return .success
                 }
             }
             if var curr = self.currentIndex {
                 self.musicPlayer?.stop()
-                curr -= 1
+                if self.repeatType == .all || self.repeatType == .off {
+                    curr -= 1
+                }
                 self.musicPlayer = try? AVAudioPlayer(contentsOf: MusicLibrary.library[curr].url)
                 self.currentIndex = curr
                 self.musicPlayer?.play()
@@ -114,20 +121,39 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         MPRemoteCommandCenter.shared().nextTrackCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
-            if var curr = self.currentIndex {
-                self.musicPlayer?.stop()
-                curr = (curr + 1)%(MusicLibrary.library.count)
-                self.musicPlayer = try? AVAudioPlayer(contentsOf: MusicLibrary.library[curr].url)
-                self.currentIndex = curr
-                self.musicPlayer?.play()
-                self.updateNowPlaying()
+            
+            return self.nextSong() ? .success : .commandFailed
+        }
+        
+        MPRemoteCommandCenter.shared().changeRepeatModeCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+            
+            if let e = event as? MPChangeRepeatModeCommandEvent {
+                self.repeatType = e.repeatType
                 return .success
             }
             return .commandFailed
         }
         
-        
-        
+    }
+    
+    private func nextSong() -> Bool{
+        if var curr = self.currentIndex {
+            self.musicPlayer?.stop()
+            
+            if self.repeatType == .all {
+                curr = (curr + 1)%(MusicLibrary.library.count)
+            } else if self.repeatType == .off {
+                if curr < MusicLibrary.library.count - 1 {
+                    curr += 1
+                }
+            }
+            self.musicPlayer = try? AVAudioPlayer(contentsOf: MusicLibrary.library[curr].url)
+            self.currentIndex = curr
+            self.musicPlayer?.play()
+            self.updateNowPlaying()
+            return true
+        }
+        return false
     }
     
     private func updateNowPlaying(){
@@ -155,6 +181,14 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .default, reuseIdentifier: "musicCell")
         cell.textLabel?.text = MusicLibrary.library[indexPath.row].title
         cell.detailTextLabel?.text = MusicLibrary.library[indexPath.row].artist
+        
+        if let c = self.currentIndex,
+            indexPath.row == c
+        {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         return cell
     }
     
@@ -170,6 +204,10 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.deselectRow(at: indexPath, animated: true)
         }
         
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        _ = self.nextSong()
     }
 }
 
