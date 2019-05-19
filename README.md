@@ -1,6 +1,6 @@
 # UniPlayer
 
-### An iOS music player for different sources
+### An universial iOS music player for different sources
 
 ##### Currently working on:
 - iCloud Drive
