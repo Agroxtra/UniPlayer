@@ -185,7 +185,8 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let image = MusicLibrary.library[indexPath.row].artwork {
             cell.imageView?.image = image
         } else {
-            cell.imageView?.image = UIColor.white.image(CGSize(width: 128, height: 128))
+            //cell.imageView?.image = UIColor.white.image(CGSize(width: 128, height: 128))
+            cell.imageView?.image = UIImage(named: "musicnote")
         }
         cell.imageView?.layer.masksToBounds = true
         cell.imageView?.layer.cornerRadius = 10
