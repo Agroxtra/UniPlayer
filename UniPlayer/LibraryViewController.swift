@@ -15,7 +15,20 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     var musicPlayer : AVAudioPlayer?
-    var currentIndex: Int?
+    var currentIndex: Int? {
+        didSet {
+            if let c = self.currentIndex,
+                self.tableView != nil
+            {
+                DispatchQueue.main.async {
+                    for cell in self.tableView.visibleCells {
+                        cell.accessoryType = .none
+                    }
+                    self.tableView.cellForRow(at: IndexPath(row: c, section: 0))?.accessoryType = .checkmark
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +106,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.musicPlayer = try? AVAudioPlayer(contentsOf: MusicLibrary.library[curr].url)
                 self.currentIndex = curr
                 self.musicPlayer?.play()
+                self.updateNowPlaying()
                 return .success
             }
             return .commandFailed
@@ -105,6 +119,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.musicPlayer = try? AVAudioPlayer(contentsOf: MusicLibrary.library[curr].url)
                 self.currentIndex = curr
                 self.musicPlayer?.play()
+                self.updateNowPlaying()
                 return .success
             }
             return .commandFailed
@@ -112,6 +127,21 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    private func updateNowPlaying(){
+        if let curr = self.currentIndex {
+            let song = MusicLibrary.library[curr]
+            var nowPlayingInfo = [String: Any]()
+            nowPlayingInfo[MPMediaItemPropertyTitle] = song.title
+            nowPlayingInfo[MPMediaItemPropertyArtist] = song.artist
+            nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.musicPlayer?.currentTime ?? 0
+            nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.musicPlayer?.duration ?? 0
+            nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = self.musicPlayer?.rate ?? 0
+            
+            DispatchQueue.main.async {
+                MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+            }
+        }
+    }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -122,6 +152,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .default, reuseIdentifier: "musicCell")
         cell.textLabel?.text = MusicLibrary.library[indexPath.row].title
         cell.detailTextLabel?.text = MusicLibrary.library[indexPath.row].artist
+        
         return cell
     }
     
@@ -131,19 +162,12 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.musicPlayer?.stop()
         self.musicPlayer = try? AVAudioPlayer(contentsOf: song.url)
         self.musicPlayer?.play()
-        
-        var nowPlayingInfo = [String: Any]()
-        nowPlayingInfo[MPMediaItemPropertyTitle] = song.title
-        nowPlayingInfo[MPMediaItemPropertyArtist] = song.artist
-        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.musicPlayer?.currentTime ?? 0
-        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.musicPlayer?.duration ?? 0
-        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = self.musicPlayer?.rate ?? 0
+        self.updateNowPlaying()
         
         DispatchQueue.main.async {
-            MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+            tableView.deselectRow(at: indexPath, animated: true)
         }
         
-
     }
 }
 
