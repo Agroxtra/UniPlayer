@@ -15,6 +15,7 @@ build.xcarchive
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
+project.pbxproj
 
 ## Other
 *.xccheckout
