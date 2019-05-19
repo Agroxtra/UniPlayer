@@ -29,6 +29,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
+    var isOnRepeat : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,6 +126,8 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             return .commandFailed
         }
         
+        
+        
     }
     
     private func updateNowPlaying(){
@@ -152,7 +155,6 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .default, reuseIdentifier: "musicCell")
         cell.textLabel?.text = MusicLibrary.library[indexPath.row].title
         cell.detailTextLabel?.text = MusicLibrary.library[indexPath.row].artist
-        
         return cell
     }
     
