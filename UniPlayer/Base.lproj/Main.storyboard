@@ -14,8 +14,8 @@
         <scene sceneID="eqb-hW-53H">
             <objects>
                 <navigationController id="AOd-GV-D5Z" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WVw-0k-qk4">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="WVw-0k-qk4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-1045" y="50"/>
         </scene>
-        <!--View Controller-->
+        <!--Library-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MusicPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LibraryViewController" customModule="UniPlayer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +52,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lky-q4-CIp"/>
+                    <navigationItem key="navigationItem" title="Library" id="lky-q4-CIp">
+                        <barButtonItem key="leftBarButtonItem" title="Sources" id="DpL-pD-JXN"/>
+                        <barButtonItem key="rightBarButtonItem" title="Now Playing" id="HA5-d5-AdQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="FoQ-hl-oSL" id="xDv-nh-mlq"/>
                     </connections>
