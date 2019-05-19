@@ -13,13 +13,12 @@
 		5B67E0FA2290342700932B7C /* MusicPlayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B67E0F82290342700932B7C /* MusicPlayer.xcdatamodeld */; };
 		5B67E0FC2290342900932B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B67E0FB2290342900932B7C /* Assets.xcassets */; };
 		5B67E0FF2290342900932B7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B67E0FD2290342900932B7C /* LaunchScreen.storyboard */; };
-		5B67E1072290355400932B7C /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B67E1062290355400932B7C /* MusicPlayerViewController.swift */; };
 		5BD419002291716F00533FB5 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD418FF2291716F00533FB5 /* FileSystemManager.swift */; };
 		5BD4190222917BB500533FB5 /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD4190122917BB500533FB5 /* MusicLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B67E0EE2290342700932B7C /* MusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B67E0EE2290342700932B7C /* UniPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B67E0F12290342700932B7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B67E0F32290342700932B7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5B67E0F62290342700932B7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -27,7 +26,6 @@
 		5B67E0FB2290342900932B7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B67E0FE2290342900932B7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B67E1002290342900932B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B67E1062290355400932B7C /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 		5BD418FF2291716F00533FB5 /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		5BD4190122917BB500533FB5 /* MusicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,7 +44,7 @@
 		5B67E0E52290342700932B7C = {
 			isa = PBXGroup;
 			children = (
-				5B67E0F02290342700932B7C /* MusicPlayer */,
+				5B67E0F02290342700932B7C /* UniPlayer */,
 				5B67E0EF2290342700932B7C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +52,12 @@
 		5B67E0EF2290342700932B7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5B67E0EE2290342700932B7C /* MusicPlayer.app */,
+				5B67E0EE2290342700932B7C /* UniPlayer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5B67E0F02290342700932B7C /* MusicPlayer */ = {
+		5B67E0F02290342700932B7C /* UniPlayer */ = {
 			isa = PBXGroup;
 			children = (
 				5BD418FE2291708100533FB5 /* Documents */,
@@ -70,11 +68,10 @@
 				5B67E0FD2290342900932B7C /* LaunchScreen.storyboard */,
 				5B67E1002290342900932B7C /* Info.plist */,
 				5B67E0F82290342700932B7C /* MusicPlayer.xcdatamodeld */,
-				5B67E1062290355400932B7C /* MusicPlayerViewController.swift */,
 				5BD418FF2291716F00533FB5 /* FileSystemManager.swift */,
 				5BD4190122917BB500533FB5 /* MusicLibrary.swift */,
 			);
-			path = MusicPlayer;
+			path = UniPlayer;
 			sourceTree = "<group>";
 		};
 		5BD418FE2291708100533FB5 /* Documents */ = {
@@ -87,9 +84,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5B67E0ED2290342700932B7C /* MusicPlayer */ = {
+		5B67E0ED2290342700932B7C /* UniPlayer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5B67E1032290342900932B7C /* Build configuration list for PBXNativeTarget "MusicPlayer" */;
+			buildConfigurationList = 5B67E1032290342900932B7C /* Build configuration list for PBXNativeTarget "UniPlayer" */;
 			buildPhases = (
 				5B67E0EA2290342700932B7C /* Sources */,
 				5B67E0EB2290342700932B7C /* Frameworks */,
@@ -99,9 +96,9 @@
 			);
 			dependencies = (
 			);
-			name = MusicPlayer;
+			name = UniPlayer;
 			productName = MusicPlayer;
-			productReference = 5B67E0EE2290342700932B7C /* MusicPlayer.app */;
+			productReference = 5B67E0EE2290342700932B7C /* UniPlayer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +121,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5B67E0E92290342700932B7C /* Build configuration list for PBXProject "MusicPlayer" */;
+			buildConfigurationList = 5B67E0E92290342700932B7C /* Build configuration list for PBXProject "UniPlayer" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -137,7 +134,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5B67E0ED2290342700932B7C /* MusicPlayer */,
+				5B67E0ED2290342700932B7C /* UniPlayer */,
 			);
 		};
 /* End PBXProject section */
@@ -165,7 +162,6 @@
 				5B67E0FA2290342700932B7C /* MusicPlayer.xcdatamodeld in Sources */,
 				5BD4190222917BB500533FB5 /* MusicLibrary.swift in Sources */,
 				5B67E0F22290342700932B7C /* AppDelegate.swift in Sources */,
-				5B67E1072290355400932B7C /* MusicPlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,12 +311,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GMZW8X4D6V;
-				INFOPLIST_FILE = MusicPlayer/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/UniPlayer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zoerfuss.MusicPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zoerfuss.UniPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -333,12 +329,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GMZW8X4D6V;
-				INFOPLIST_FILE = MusicPlayer/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/UniPlayer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zoerfuss.MusicPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zoerfuss.UniPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -348,7 +344,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5B67E0E92290342700932B7C /* Build configuration list for PBXProject "MusicPlayer" */ = {
+		5B67E0E92290342700932B7C /* Build configuration list for PBXProject "UniPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B67E1012290342900932B7C /* Debug */,
@@ -357,7 +353,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5B67E1032290342900932B7C /* Build configuration list for PBXNativeTarget "MusicPlayer" */ = {
+		5B67E1032290342900932B7C /* Build configuration list for PBXNativeTarget "UniPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B67E1042290342900932B7C /* Debug */,
