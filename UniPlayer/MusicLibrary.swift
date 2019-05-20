@@ -14,7 +14,27 @@ class MusicLibrary {
     static var library = [Song]()
     static var playlists = [Playlist]()
     
-//    static var 
+    static func loadLibrary(){
+        // MARK: create readme file creates directory for App
+        let file = AppFile()
+        try? FileManager.default.createDirectory(at: AppFile().songsDirectoryURL(), withIntermediateDirectories: true, attributes: nil)
+        _ = file.writeFile(containing: "Put all your mp3 files here and they will be recognized after relaunching the application. Then you can play them as you wish.", to: .Songs, withName: "readme.txt")
+        
+        MusicLibrary.library.removeAll()
+        
+        // MARK: read all files from Documents directory and filter them by extension mp3
+        let files = AppFile().getFileUrls(directory: AppFile().songsDirectoryURL())
+        for url in files {
+            if url.isFileURL && url.pathExtension == "mp3" {
+                // MARK: add mp3 files to library, which is used for playing music
+                MusicLibrary.library.append(Song(path: url))
+            }
+        }
+    }
+    
+    static func loadPlaylists(){
+        
+    }
 }
 
 

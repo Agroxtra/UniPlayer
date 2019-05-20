@@ -11,6 +11,7 @@ import Foundation
 enum AppDirectories : String
 {
     case Documents = "Documents"
+    case Songs = "Documents/Songs"
     case Inbox = "Inbox"
     case Library = "Library"
     case Temp = "tmp"
@@ -35,7 +36,13 @@ extension AppDirectoryNames
     func documentsDirectoryURL() -> URL
     {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        //return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+    
+    func songsDirectoryURL() -> URL
+    {
+        var docs = self.documentsDirectoryURL()
+        docs.appendPathComponent("Songs")
+        return docs
     }
     
     func inboxDirectoryURL() -> URL
@@ -66,6 +73,10 @@ extension AppDirectoryNames
             return libraryDirectoryURL()
         case .Temp:
             return tempDirectoryURL()
+        case .Songs:
+            return songsDirectoryURL()
+        default:
+            fatalError("Not supported")
         }
     }
     

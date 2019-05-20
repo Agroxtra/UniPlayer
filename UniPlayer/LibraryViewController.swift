@@ -40,7 +40,9 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
         
         self.tableView.tableFooterView = UIView()
-        self.initMusic()
+        
+        MusicLibrary.loadLibrary()
+        self.tableView.reloadData()
         
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
         try? AVAudioSession.sharedInstance().setActive(true)
@@ -50,23 +52,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func initMusic(){
         
-        // MARK: create readme file creates directory for App
-        let file = AppFile()
-        _ = file.writeFile(containing: "Put all your mp3 files here and they will be recognized after relaunching the application. Then you can play them as you wish.", to: .Documents, withName: "readme.txt")
         
-        MusicLibrary.library.removeAll()
-        
-        // MARK: read all files from Documents directory and filter them by extension mp3
-        let files = AppFile().getFileUrls(directory: AppFile().documentsDirectoryURL())
-        for url in files {
-            if url.isFileURL && url.pathExtension == "mp3" {
-                // MARK: add mp3 files to library, which is used for playing music
-                MusicLibrary.library.append(Song(path: url))
-            }
-        }
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
     
     private func initNowPlaying(){
