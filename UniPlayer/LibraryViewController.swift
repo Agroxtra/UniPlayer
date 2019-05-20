@@ -164,7 +164,6 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             nowPlayingInfo[MPMediaItemPropertyTitle] = song.title
             nowPlayingInfo[MPMediaItemPropertyArtist] = song.artist
             
-            //nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: song.artwork ?? UIImage(named: "musicnote")!)
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: CGSize(width: 200, height: 200), requestHandler: song.getArtwork(size:))
           
             nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.musicPlayer?.currentTime ?? 0
@@ -188,9 +187,6 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         cell.imageView?.image = Utilities.createIcon(for: MusicLibrary.library[indexPath.row].getArtwork(size: CGSize(width: 200, height: 200)), imageView: cell.imageView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
-//        cell.imageView?.layer.masksToBounds = true
-//        cell.imageView?.layer.cornerRadius = 10
-        
         
         if let c = self.currentIndex,
             indexPath.row == c

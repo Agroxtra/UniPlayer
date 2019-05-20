@@ -12,6 +12,9 @@ import AVFoundation
 
 class MusicLibrary {
     static var library = [Song]()
+    static var playlists = [Playlist]()
+    
+//    static var 
 }
 
 
