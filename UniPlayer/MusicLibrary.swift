@@ -15,14 +15,18 @@ class MusicLibrary {
 }
 
 
-struct Song {
+struct Song : Equatable{
     let artist : String?
     let url : URL
     let title : String
     let artwork : UIImage?
+    
+    static func ==(s1: Song, s2: Song) -> Bool{
+        return s1.url == s2.url
+    }
 }
 
-extension Song{
+extension Song {
     init(path: URL){
         
         url = path
