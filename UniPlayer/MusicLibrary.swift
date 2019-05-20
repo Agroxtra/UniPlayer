@@ -60,6 +60,14 @@ extension Song{
         artwork = artworkImage
     }
     
+    func getArtwork() -> UIImage {
+        if let a = artwork {
+            return a
+        } else {
+            return UIImage(named: "musicnote")!
+        }
+    }
+    
     func getArtwork(size: CGSize) -> UIImage{
         if let a = artwork {
             return resizeImage(image: a, targetSize: size)
