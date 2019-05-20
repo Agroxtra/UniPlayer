@@ -13,6 +13,7 @@ import AVFoundation
 class MusicLibrary {
     static var library = [Song]()
     static var playlists = [Playlist]()
+    static var player = Player()
     
     static func loadLibrary(){
         // MARK: create readme file creates directory for App
@@ -48,7 +49,6 @@ class MusicLibrary {
     
     private static func parsePlaylists(){
         let str = AppFile().readFile(at: .Playlists, withName: "playlists.json")
-//        print(str)
         guard let dict = Utilities.convertStringToDictionary(text: str),
             let playlists = dict["playlists"] as? [[String: Any]] else {
             print("playlists.json file invalid!")
