@@ -41,18 +41,12 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.tableView.tableFooterView = UIView()
         
-        MusicLibrary.loadLibrary()
+        MusicLibrary.load()
         self.tableView.reloadData()
         
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
         try? AVAudioSession.sharedInstance().setActive(true)
         self.initNowPlaying()
-    }
-    
-    
-    private func initMusic(){
-        
-        
     }
     
     private func initNowPlaying(){

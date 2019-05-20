@@ -34,6 +34,31 @@ class MusicLibrary {
     
     static func loadPlaylists(){
         
+        try? FileManager.default.createDirectory(at: AppFile().playlistsDirectoryURL(), withIntermediateDirectories: true, attributes: nil)
+        _ = AppFile().writeFile(containing: "This directory contains configuration of your playlists. Do NOT modify the file unless you know what you are doing!", to: .Playlists, withName: "DO_NOT_MODIFY.txt")
+        
+        MusicLibrary.playlists.removeAll()
+        parsePlaylists()
+    }
+    
+    static func load(){
+        loadLibrary()
+        loadPlaylists()
+    }
+    
+    private static func parsePlaylists(){
+        let str = AppFile().readFile(at: .Playlists, withName: "playlists.json")
+//        print(str)
+        guard let dict = Utilities.convertStringToDictionary(text: str),
+            let playlists = dict["playlists"] as? [[String: Any]] else {
+            print("playlists.json file invalid!")
+            return
+        }
+        playlists.forEach { (elem) in
+            print(elem)
+        }
+        
+        
     }
 }
 
