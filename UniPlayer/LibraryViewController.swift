@@ -170,7 +170,6 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.musicPlayer?.currentTime ?? 0
             nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.musicPlayer?.duration ?? 0
             nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = self.musicPlayer?.rate ?? 0
-            
             DispatchQueue.main.async {
                 MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
             }
@@ -186,11 +185,11 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "musicCell")
         cell.textLabel?.text = MusicLibrary.library[indexPath.row].title
         cell.detailTextLabel?.text = MusicLibrary.library[indexPath.row].artist
-        cell.imageView?.image = MusicLibrary.library[indexPath.row].getArtwork(size: CGSize(width: 200, height: 200))
+        
+        
+        cell.imageView?.image = Utilities.createIcon(for: MusicLibrary.library[indexPath.row].getArtwork(), imageView: cell.imageView ?? UIImageView(), background: .clear)
         cell.imageView?.layer.masksToBounds = true
         cell.imageView?.layer.cornerRadius = 10
-        
-        
         
         
         if let c = self.currentIndex,
