@@ -15,6 +15,7 @@
 		5B67E0FF2290342900932B7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B67E0FD2290342900932B7C /* LaunchScreen.storyboard */; };
 		5BD419002291716F00533FB5 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD418FF2291716F00533FB5 /* FileSystemManager.swift */; };
 		5BD4190222917BB500533FB5 /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD4190122917BB500533FB5 /* MusicLibrary.swift */; };
+		803EB78522930938006E6231 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803EB78422930938006E6231 /* Playlist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5B67E1002290342900932B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BD418FF2291716F00533FB5 /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		5BD4190122917BB500533FB5 /* MusicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
+		803EB78422930938006E6231 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				5B67E0F82290342700932B7C /* MusicPlayer.xcdatamodeld */,
 				5BD418FF2291716F00533FB5 /* FileSystemManager.swift */,
 				5BD4190122917BB500533FB5 /* MusicLibrary.swift */,
+				803EB78422930938006E6231 /* Playlist.swift */,
 			);
 			path = UniPlayer;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				5B67E0FA2290342700932B7C /* MusicPlayer.xcdatamodeld in Sources */,
 				5BD4190222917BB500533FB5 /* MusicLibrary.swift in Sources */,
 				5B67E0F22290342700932B7C /* AppDelegate.swift in Sources */,
+				803EB78522930938006E6231 /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
