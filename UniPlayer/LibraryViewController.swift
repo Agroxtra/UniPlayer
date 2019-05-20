@@ -61,7 +61,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         for url in files {
             if url.isFileURL && url.pathExtension == "mp3" {
                 // MARK: add mp3 files to library, which is used for playing music
-                MusicLibrary.library.append(Music(path: url))
+                MusicLibrary.library.append(Song(path: url))
             }
         }
         DispatchQueue.main.async {
