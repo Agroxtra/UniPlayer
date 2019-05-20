@@ -59,5 +59,12 @@ extension Music{
         artist = artistName
         artwork = artworkImage
     }
+    
+    func getArtwork(size: CGSize) -> UIImage{
+        if let a = artwork {
+            return a
+        }
+        return UIImage(named: "musicnote")!
+    }
 }
 

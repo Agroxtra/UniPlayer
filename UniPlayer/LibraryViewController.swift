@@ -163,6 +163,10 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             var nowPlayingInfo = [String: Any]()
             nowPlayingInfo[MPMediaItemPropertyTitle] = song.title
             nowPlayingInfo[MPMediaItemPropertyArtist] = song.artist
+            
+            //nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: song.artwork ?? UIImage(named: "musicnote")!)
+            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: CGSize(width: 100, height: 100), requestHandler: song.getArtwork(size:))
+          
             nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.musicPlayer?.currentTime ?? 0
             nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.musicPlayer?.duration ?? 0
             nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = self.musicPlayer?.rate ?? 0
@@ -185,11 +189,13 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let image = MusicLibrary.library[indexPath.row].artwork {
             cell.imageView?.image = image
         } else {
-            //cell.imageView?.image = UIColor.white.image(CGSize(width: 128, height: 128))
             cell.imageView?.image = UIImage(named: "musicnote")
         }
         cell.imageView?.layer.masksToBounds = true
         cell.imageView?.layer.cornerRadius = 10
+        
+        
+        
         
         if let c = self.currentIndex,
             indexPath.row == c
@@ -217,15 +223,5 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         _ = self.nextSong()
-    }
-}
-
-
-extension UIColor {
-    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { rendererContext in
-            self.setFill()
-            rendererContext.fill(CGRect(origin: .zero, size: size))
-        }
     }
 }
