@@ -187,9 +187,9 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.detailTextLabel?.text = MusicLibrary.library[indexPath.row].artist
         
         
-        cell.imageView?.image = Utilities.createIcon(for: MusicLibrary.library[indexPath.row].getArtwork(), imageView: cell.imageView ?? UIImageView(), background: .clear)
-        cell.imageView?.layer.masksToBounds = true
-        cell.imageView?.layer.cornerRadius = 10
+        cell.imageView?.image = Utilities.createIcon(for: MusicLibrary.library[indexPath.row].getArtwork(size: CGSize(width: 200, height: 200)), imageView: cell.imageView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
+//        cell.imageView?.layer.masksToBounds = true
+//        cell.imageView?.layer.cornerRadius = 10
         
         
         if let c = self.currentIndex,

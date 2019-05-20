@@ -24,16 +24,17 @@ extension UIColor {
 
 
 class Utilities {
-    public static  func createIcon(for image: UIImage, imageView: UIImageView, background color: UIColor, imgFactor: CGFloat = 0.6) -> UIImage {
+    public static  func createIcon(for image: UIImage, imageView: UIImageView, background color: UIColor, imgFactor: CGFloat = 0.6, cornerRadius: CGFloat = 7) -> UIImage {
         
         let sizeImg = imageView.bounds.height * imgFactor
-        let size = imageView.bounds.height * 0.7
+        let size = imageView.bounds.height/* * 0.7*/
         let imgView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: sizeImg, height: sizeImg)))
-        
+        imgView.layer.masksToBounds = true
+        imgView.layer.cornerRadius = cornerRadius
         let v = UIView(frame: CGRect(origin: .zero, size: CGSize(width: size, height: size)))
         v.addSubview(imgView)
-        v.layer.masksToBounds = true
-        v.layer.cornerRadius = 7
+//        v.layer.masksToBounds = true
+//        v.layer.cornerRadius = cornerRadius
         v.backgroundColor = color
         imgView.center = v.center
         imgView.image = image
