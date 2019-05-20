@@ -165,7 +165,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             nowPlayingInfo[MPMediaItemPropertyArtist] = song.artist
             
             //nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: song.artwork ?? UIImage(named: "musicnote")!)
-            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: CGSize(width: 100, height: 100), requestHandler: song.getArtwork(size:))
+            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: CGSize(width: 200, height: 200), requestHandler: song.getArtwork(size:))
           
             nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.musicPlayer?.currentTime ?? 0
             nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.musicPlayer?.duration ?? 0
@@ -186,11 +186,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "musicCell")
         cell.textLabel?.text = MusicLibrary.library[indexPath.row].title
         cell.detailTextLabel?.text = MusicLibrary.library[indexPath.row].artist
-        if let image = MusicLibrary.library[indexPath.row].artwork {
-            cell.imageView?.image = image
-        } else {
-            cell.imageView?.image = UIImage(named: "musicnote")
-        }
+        cell.imageView?.image = MusicLibrary.library[indexPath.row].getArtwork(size: CGSize(width: 200, height: 200))
         cell.imageView?.layer.masksToBounds = true
         cell.imageView?.layer.cornerRadius = 10
         
