@@ -60,7 +60,6 @@
 		5B67E0F02290342700932B7C /* UniPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				5BD418FE2291708100533FB5 /* Documents */,
 				5B67E0F12290342700932B7C /* AppDelegate.swift */,
 				5B67E0F32290342700932B7C /* LibraryViewController.swift */,
 				5B67E0F52290342700932B7C /* Main.storyboard */,
@@ -72,13 +71,6 @@
 				5BD4190122917BB500533FB5 /* MusicLibrary.swift */,
 			);
 			path = UniPlayer;
-			sourceTree = "<group>";
-		};
-		5BD418FE2291708100533FB5 /* Documents */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Documents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,7 +302,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GMZW8X4D6V;
+				DEVELOPMENT_TEAM = 37V24BBCXL;
 				INFOPLIST_FILE = "$(SRCROOT)/UniPlayer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -328,7 +320,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GMZW8X4D6V;
+				DEVELOPMENT_TEAM = 37V24BBCXL;
 				INFOPLIST_FILE = "$(SRCROOT)/UniPlayer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
