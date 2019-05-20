@@ -11,18 +11,18 @@ import UIKit
 import AVFoundation
 
 class MusicLibrary {
-    static var library = [Music]()
+    static var library = [Song]()
 }
 
 
-struct Music {
+struct Song {
     let artist : String?
     let url : URL
     let title : String
     let artwork : UIImage?
 }
 
-extension Music{
+extension Song{
     init(path: URL){
         
         url = path
