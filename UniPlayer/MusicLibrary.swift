@@ -14,6 +14,11 @@ class MusicLibrary {
     static var library = [Song]()
     static var playlists = [Playlist]()
     static var player = Player()
+    static var isLoaded : Bool {
+        get{
+            return playlists.count > 0 || library.count > 0
+        }
+    }
     
     static func loadLibrary(){
         // MARK: create readme file creates directory for App
@@ -50,12 +55,17 @@ class MusicLibrary {
     private static func parsePlaylists(){
         let str = AppFile().readFile(at: .Playlists, withName: "playlists.json")
         guard let dict = Utilities.convertStringToDictionary(text: str),
-            let playlists = dict["playlists"] as? [[String: Any]] else {
+            let playlists = dict["playlists"] as? [[String: AnyObject]] else {
             print("playlists.json file invalid!")
             return
         }
-        playlists.forEach { (elem) in
-            print(elem)
+        for pDict in playlists {
+            if let playlist = Playlist.createFrom(dict: pDict) {
+                MusicLibrary.playlists.append(playlist)
+            } else {
+                print("Invalid Playlist")
+                print(pDict)
+            }
         }
         
         
