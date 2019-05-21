@@ -10,9 +10,19 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PlayerDelegate {
+class LocalLibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PlayerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        MusicLibrary.player.delegate = self
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        // MARK: eventually remove player delegate
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +30,10 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.tableView.tableFooterView = UIView()
         
-        self.tableView.reloadData()
-        
-        MusicLibrary.load()
-        MusicLibrary.player.delegate = self
-        
+//        if !MusicLibrary.isLoaded {
+//            MusicLibrary.load()
+//            self.tableView.reloadData()
+//        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,17 +48,18 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.imageView?.image = Utilities.createIcon(for: MusicLibrary.library[indexPath.row].getArtwork(size: CGSize(width: 200, height: 200)), imageView: cell.imageView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
         
-        if let c = MusicLibrary.player.currentIndex,
+        /*if let c = MusicLibrary.player.currentIndex,
             indexPath.row == c
         {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
-        }
+        }*/
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        MusicLibrary.player.queue = MusicLibrary.library
         MusicLibrary.player.playSong(index: indexPath.row)
         DispatchQueue.main.async {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -57,7 +67,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func didUpdate() {
-        if let c = MusicLibrary.player.currentIndex,
+        /*if let c = MusicLibrary.player.currentIndex,
             self.tableView != nil
         {
             DispatchQueue.main.async {
@@ -66,6 +76,6 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 self.tableView.cellForRow(at: IndexPath(row: c, section: 0))?.accessoryType = .checkmark
             }
-        }
+        }*/
     }
 }
