@@ -34,6 +34,7 @@ class MusicLibrary {
             if url.isFileURL && url.pathExtension == "mp3" {
                 // MARK: add mp3 files to library, which is used for playing music
                 MusicLibrary.library.append(Song(path: url))
+                print(url)
             }
         }
     }

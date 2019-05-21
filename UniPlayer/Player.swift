@@ -25,6 +25,16 @@ class Player : NSObject, AVAudioPlayerDelegate {
         }
     }
     
+    public var currentlyPlayingSong : Song? {
+        get {
+            if let c = self.currentIndex,
+                c < self._queue.count{
+                return self._queue[c]
+            }
+            return nil
+        }
+    }
+    
     private var musicPlayer : AVAudioPlayer? {
         didSet {
             self.musicPlayer?.delegate = self
@@ -127,7 +137,6 @@ class Player : NSObject, AVAudioPlayerDelegate {
             }
             self.musicPlayer = try? AVAudioPlayer(contentsOf: self._queue[curr].url)
             self.currentIndex = curr
-            print("playing next song \(self._queue[curr].title)")
             self.musicPlayer?.play()
             self.updateNowPlaying()
             return true
@@ -136,7 +145,6 @@ class Player : NSObject, AVAudioPlayerDelegate {
     }
     
     private func updateNowPlaying(){
-        print("updating now playing")
         MPRemoteCommandCenter.shared().nextTrackCommand.isEnabled = self._queue.count > 1
 
         if let curr = self.currentIndex {
@@ -169,7 +177,6 @@ class Player : NSObject, AVAudioPlayerDelegate {
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        print("finished playing…")
         _ = self.nextSong()
     }
 }
