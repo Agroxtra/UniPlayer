@@ -10,11 +10,13 @@
 		5B01BE8422932BC80017E8FD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01BE8322932BC80017E8FD /* Player.swift */; };
 		5B47A9CA2293052B00EBE2F0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B47A9C92293052B00EBE2F0 /* Utilities.swift */; };
 		5B67E0F22290342700932B7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B67E0F12290342700932B7C /* AppDelegate.swift */; };
-		5B67E0F42290342700932B7C /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B67E0F32290342700932B7C /* LibraryViewController.swift */; };
+		5B67E0F42290342700932B7C /* LocalLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B67E0F32290342700932B7C /* LocalLibraryViewController.swift */; };
 		5B67E0F72290342700932B7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B67E0F52290342700932B7C /* Main.storyboard */; };
 		5B67E0FA2290342700932B7C /* MusicPlayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B67E0F82290342700932B7C /* MusicPlayer.xcdatamodeld */; };
 		5B67E0FC2290342900932B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B67E0FB2290342900932B7C /* Assets.xcassets */; };
 		5B67E0FF2290342900932B7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B67E0FD2290342900932B7C /* LaunchScreen.storyboard */; };
+		5BB0060A22946D1E00CB211B /* PlaylistsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0060922946D1E00CB211B /* PlaylistsTableViewController.swift */; };
+		5BB0060C2294743300CB211B /* PlaylistItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0060B2294743300CB211B /* PlaylistItemTableViewController.swift */; };
 		5BD419002291716F00533FB5 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD418FF2291716F00533FB5 /* FileSystemManager.swift */; };
 		5BD4190222917BB500533FB5 /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD4190122917BB500533FB5 /* MusicLibrary.swift */; };
 		803EB78522930938006E6231 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803EB78422930938006E6231 /* Playlist.swift */; };
@@ -25,12 +27,14 @@
 		5B47A9C92293052B00EBE2F0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		5B67E0EE2290342700932B7C /* UniPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B67E0F12290342700932B7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B67E0F32290342700932B7C /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		5B67E0F32290342700932B7C /* LocalLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibraryViewController.swift; sourceTree = "<group>"; };
 		5B67E0F62290342700932B7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B67E0F92290342700932B7C /* MusicPlayer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MusicPlayer.xcdatamodel; sourceTree = "<group>"; };
 		5B67E0FB2290342900932B7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B67E0FE2290342900932B7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B67E1002290342900932B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BB0060922946D1E00CB211B /* PlaylistsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsTableViewController.swift; sourceTree = "<group>"; };
+		5BB0060B2294743300CB211B /* PlaylistItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemTableViewController.swift; sourceTree = "<group>"; };
 		5BD418FF2291716F00533FB5 /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		5BD4190122917BB500533FB5 /* MusicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
 		803EB78422930938006E6231 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
@@ -67,7 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				5B67E0F12290342700932B7C /* AppDelegate.swift */,
-				5B67E0F32290342700932B7C /* LibraryViewController.swift */,
+				5B67E0F32290342700932B7C /* LocalLibraryViewController.swift */,
 				5B67E0F52290342700932B7C /* Main.storyboard */,
 				5B67E0FB2290342900932B7C /* Assets.xcassets */,
 				5B67E0FD2290342900932B7C /* LaunchScreen.storyboard */,
@@ -78,6 +82,8 @@
 				803EB78422930938006E6231 /* Playlist.swift */,
 				5B47A9C92293052B00EBE2F0 /* Utilities.swift */,
 				5B01BE8322932BC80017E8FD /* Player.swift */,
+				5BB0060922946D1E00CB211B /* PlaylistsTableViewController.swift */,
+				5BB0060B2294743300CB211B /* PlaylistItemTableViewController.swift */,
 			);
 			path = UniPlayer;
 			sourceTree = "<group>";
@@ -158,14 +164,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB0060C2294743300CB211B /* PlaylistItemTableViewController.swift in Sources */,
 				5B47A9CA2293052B00EBE2F0 /* Utilities.swift in Sources */,
 				5BD419002291716F00533FB5 /* FileSystemManager.swift in Sources */,
-				5B67E0F42290342700932B7C /* LibraryViewController.swift in Sources */,
+				5B67E0F42290342700932B7C /* LocalLibraryViewController.swift in Sources */,
 				5B67E0FA2290342700932B7C /* MusicPlayer.xcdatamodeld in Sources */,
 				5B01BE8422932BC80017E8FD /* Player.swift in Sources */,
 				5BD4190222917BB500533FB5 /* MusicLibrary.swift in Sources */,
 				5B67E0F22290342700932B7C /* AppDelegate.swift in Sources */,
 				803EB78522930938006E6231 /* Playlist.swift in Sources */,
+				5BB0060A22946D1E00CB211B /* PlaylistsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

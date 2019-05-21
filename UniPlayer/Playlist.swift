@@ -43,7 +43,7 @@ class Playlist{
         
         
         if let n = name, let l = lastPlayed{
-            var pl = Playlist(name: n, lastPlayed: l)
+            let pl = Playlist(name: n, lastPlayed: l)
             songList.sort { (s1, s2) -> Bool in
                 return s1.songIndex < s2.songIndex
             }
