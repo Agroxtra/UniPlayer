@@ -122,6 +122,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     }
     
     private func updateNowPlaying(){
+        print("updating now playing")
         if let curr = self.currentIndex {
             let song = MusicLibrary.library[curr]
             var nowPlayingInfo = [String: Any]()
@@ -141,9 +142,11 @@ class Player : NSObject, AVAudioPlayerDelegate {
     
     func playSong(index: Int) {
         let song = MusicLibrary.library[index]
+        self.currentIndex = index
         self.musicPlayer?.stop()
         self.musicPlayer = try? AVAudioPlayer(contentsOf: song.url)
         self.musicPlayer?.play()
+        
         self.updateNowPlaying()
     }
     
