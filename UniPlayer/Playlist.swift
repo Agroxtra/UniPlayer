@@ -48,7 +48,7 @@ class Playlist{
                 return s1.songIndex < s2.songIndex
             }
             for item in songList{
-                pl.addSong(song: Song(path: URL(fileURLWithPath: item.url)))
+                pl.addSong(song: Song(path: AppFile().songsDirectoryURL().appendingPathComponent(item.url)))
             }
             return pl
         } else {
