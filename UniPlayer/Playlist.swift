@@ -88,7 +88,7 @@ class Playlist{
             var songDict: [String:AnyObject] = [:]
             songDict["songIndex"] = i as AnyObject
             i += 1
-            songDict["songSource"] = "local" as AnyObject //TODO: change to enum
+            songDict["songSource"] = song.sourceType.rawValue as AnyObject
             songDict["songURL"] = song.url.lastPathComponent as AnyObject
             songArray.append(songDict)
         }
