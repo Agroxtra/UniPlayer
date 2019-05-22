@@ -12,7 +12,14 @@ import AVFoundation
 
 class MusicLibrary {
     static var library = [Song]()
-    static var playlists = [Playlist]()
+    static var playlists = [Playlist]() {
+        didSet (oldVal) {
+            if MusicLibrary.playlists.count != oldVal.count {
+                print("playlists set")
+                self.savePlaylists()
+            }
+        }
+    }
     static var player = Player()
     static var isLoaded : Bool {
         get{
