@@ -53,6 +53,15 @@ class PlaylistItemTableViewController : UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            MusicLibrary.playlists[self.playlistIndex].removeSong(atIndex: indexPath.row)
+            DispatchQueue.main.async {
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
+    }
     
     @objc
     private func addButtonPressed(_ sender: UIBarButtonItem) {
