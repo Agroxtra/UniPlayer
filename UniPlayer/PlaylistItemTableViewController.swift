@@ -20,10 +20,6 @@ class PlaylistItemTableViewController : UITableViewController {
         let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonPressed(_:)))
         self.navigationItem.setRightBarButton(addBtn, animated: false)
         
-        //MARK: setup edit button (UIBarButtonItem)
-        let editBtn = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editButtonPressed(_:)))
-        self.navigationItem.setLeftBarButton(editBtn, animated: false)
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

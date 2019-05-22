@@ -322,7 +322,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37V24BBCXL;
+				DEVELOPMENT_TEAM = GMZW8X4D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/UniPlayer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -340,7 +340,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37V24BBCXL;
+				DEVELOPMENT_TEAM = GMZW8X4D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/UniPlayer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

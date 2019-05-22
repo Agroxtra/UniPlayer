@@ -12,10 +12,6 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if !MusicLibrary.isLoaded {
-//            MusicLibrary.load()
-//            self.tableView.reloadData()
-//        }
         
     }
     
@@ -52,7 +48,6 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
     }
     
     func didUpdate() {
-        print("playing playlist \(MusicLibrary.playlists[MusicLibrary.player.currentIndex ?? 0].name)")
 
     }
     
