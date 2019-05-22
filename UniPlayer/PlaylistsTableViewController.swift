@@ -46,6 +46,16 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
         
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            MusicLibrary.playlists.remove(at: indexPath.row)
+            DispatchQueue.main.async {
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
+    }
+    
     @IBAction func addButtonPressed(_ sender: Any) {
         let alertController = UIAlertController(title: "New Playlist", message: "Give your new playlist a name", preferredStyle: .alert)
         alertController.addTextField { (txtFld) in
@@ -64,6 +74,8 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    
     
     func didUpdate() {
 

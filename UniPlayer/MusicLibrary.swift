@@ -15,7 +15,6 @@ class MusicLibrary {
     static var playlists = [Playlist]() {
         didSet (oldVal) {
             if MusicLibrary.playlists.count != oldVal.count {
-                print("playlists set")
                 self.savePlaylists()
             }
         }

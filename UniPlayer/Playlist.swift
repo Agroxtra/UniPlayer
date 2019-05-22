@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Playlist{
+class Playlist : Equatable {
     private var _list: [Song] = []
     public var name: String
     public var lastPlayed: Date
@@ -97,6 +97,10 @@ class Playlist{
         }
         pl["songs"] = songArray as AnyObject
         return pl
+    }
+    
+    static func ==(lhs: Playlist, rhs: Playlist) -> Bool{
+        return lhs.name == rhs.name
     }
     
 }
