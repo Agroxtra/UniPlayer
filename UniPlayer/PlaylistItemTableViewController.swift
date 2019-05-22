@@ -11,6 +11,15 @@ import UIKit
 class PlaylistItemTableViewController : UITableViewController {
     public var playlistIndex : Int!
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.async {
+            if self.tableView != nil {
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +57,18 @@ class PlaylistItemTableViewController : UITableViewController {
     @objc
     private func addButtonPressed(_ sender: UIBarButtonItem) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Add Song", message: "This method is not implemented yet", preferredStyle: .alert)
+            /*let alert = UIAlertController(title: "Add Song", message: "This method is not implemented yet", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok…", style: .default, handler: { (_) in
                 alert.dismiss(animated: true, completion: nil)
             }))
-            self.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)*/
+            guard let nvc = self.storyboard?.instantiateViewController(withIdentifier: "addSongVC") as? UINavigationController,
+                let rootVC = nvc.viewControllers.first as? SearchLibraryViewController else
+            {
+                fatalError("Storyboard has to contain a \"addSongVC\" View Controller")
+            }
+            rootVC.playlistIndex = self.playlistIndex
+            self.present(nvc, animated: true, completion: nil)
         }
     }
     

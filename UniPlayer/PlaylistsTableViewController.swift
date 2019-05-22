@@ -47,6 +47,25 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
         
     }
     
+    @IBAction func addButtonPressed(_ sender: Any) {
+        let alertController = UIAlertController(title: "New Playlist", message: "Give your new playlist a name", preferredStyle: .alert)
+        alertController.addTextField { (txtFld) in
+            txtFld.placeholder = "Playlist Name"
+        }
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+            MusicLibrary.playlists.append(Playlist(name: alertController.textFields?.first?.text ?? "NO NAME"))
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            alertController.dismiss(animated: true, completion: nil)
+        }))
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     func didUpdate() {
 
     }
