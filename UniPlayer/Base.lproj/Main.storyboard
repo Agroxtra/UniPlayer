@@ -14,7 +14,7 @@
         <scene sceneID="eqb-hW-53H">
             <objects>
                 <navigationController id="AOd-GV-D5Z" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sources" id="xet-Xc-Lfj"/>
+                    <tabBarItem key="tabBarItem" title="Sources" image="musicnoteicon" landscapeImage="musicnoteicon" largeContentSizeImage="musicnoteicon" id="xet-Xc-Lfj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="WVw-0k-qk4">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -120,7 +120,7 @@
         <scene sceneID="9RZ-S8-5Mm">
             <objects>
                 <navigationController id="svs-ZD-H3L" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Playlists" id="fm3-HL-PNM"/>
+                    <tabBarItem key="tabBarItem" title="Playlists" image="playlisticon" landscapeImage="playlisticon" largeContentSizeImage="playlisticon" id="fm3-HL-PNM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="8f5-4P-ik1">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -283,5 +283,7 @@
     </scenes>
     <resources>
         <image name="musicnote" width="100" height="100"/>
+        <image name="musicnoteicon" width="23" height="23"/>
+        <image name="playlisticon" width="23" height="23"/>
     </resources>
 </document>
