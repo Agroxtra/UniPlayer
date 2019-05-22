@@ -104,10 +104,15 @@ struct Song : Equatable{
     let url : URL
     let title : String
     let artwork : UIImage?
+    let sourceType: SourceType = .local
     
     static func ==(s1: Song, s2: Song) -> Bool{
         return s1.url == s2.url
     }
+}
+
+enum SourceType: String {
+    case local = "local"
 }
 
 extension Song {
