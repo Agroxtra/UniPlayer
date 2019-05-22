@@ -66,16 +66,19 @@ class Playlist{
     
     func addSong(song: Song){
         _list.append(song)
+        MusicLibrary.savePlaylists()
     }
     
     func removeSong(song: Song){
         while let i = _list.firstIndex(of: song){
             _list.remove(at: i)
         }
+        MusicLibrary.savePlaylists()
     }
     
     func removeSong(atIndex: Int){
         _list.remove(at: atIndex)
+        MusicLibrary.savePlaylists()
     }
     
     func savePlaylist() -> [String:AnyObject]{

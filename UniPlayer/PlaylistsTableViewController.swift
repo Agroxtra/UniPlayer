@@ -31,7 +31,6 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("playing playlist \(MusicLibrary.playlists[indexPath.row].name)")
         DispatchQueue.main.async {
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlaylistItemTableVC") as? PlaylistItemTableViewController else
             {
