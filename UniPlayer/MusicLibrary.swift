@@ -46,6 +46,8 @@ class MusicLibrary {
         
         MusicLibrary.playlists.removeAll()
         parsePlaylists()
+        
+        savePlaylists()
     }
     
     static func load(){
@@ -69,6 +71,29 @@ class MusicLibrary {
             }
         }
         
+        
+    }
+    
+    static func savePlaylists() {
+        var playlistsArray: [[String:AnyObject]] = []
+        for pl in playlists{
+            playlistsArray.append(pl.savePlaylist())
+        }
+        
+        
+        var playlistsDict: [String:AnyObject] = [:]
+        playlistsDict["playlists"] = playlistsArray as AnyObject
+        
+        if let theJSONData = try?  JSONSerialization.data(
+            withJSONObject: playlistsDict,
+            options: .prettyPrinted
+            ),
+            let theJSONText = String(data: theJSONData,
+                                     encoding: String.Encoding.ascii) {
+//            print("JSON string = \n\(theJSONText)")
+            let file = AppFile()
+            _ = file.writeFile(containing: theJSONText, to: .Playlists, withName: "playlists.json")
+        }
         
     }
 }
