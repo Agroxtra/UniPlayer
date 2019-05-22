@@ -60,7 +60,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Playlists" id="LWI-9M-4te">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="WOK-1T-Igv"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="onN-Q8-OKK"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="k3n-14-cPW"/>
                     </navigationItem>
                 </tableViewController>
