@@ -78,6 +78,24 @@ class Playlist{
         _list.remove(at: atIndex)
     }
     
+    func savePlaylist() -> [String:AnyObject]{
+        var pl: [String:AnyObject] = [:]
+        pl["name"] = name as AnyObject
+        pl["lastPlayed"] = ISO8601DateFormatter().string(from: lastPlayed) as AnyObject
+        var songArray: [[String:AnyObject]] = []
+        var i = 0
+        for song in list{
+            var songDict: [String:AnyObject] = [:]
+            songDict["songIndex"] = i as AnyObject
+            i += 1
+            songDict["songSource"] = "local" as AnyObject //TODO: change to enum
+            songDict["songURL"] = song.url.lastPathComponent as AnyObject
+            songArray.append(songDict)
+        }
+        pl["songs"] = songArray as AnyObject
+        return pl
+    }
+    
 }
 
 struct PlaylistItem {
