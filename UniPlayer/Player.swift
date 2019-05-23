@@ -61,7 +61,6 @@ class Player : NSObject, AVAudioPlayerDelegate {
         MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
             
             if let p = self.musicPlayer {
-                
                 if p.isPlaying {
                     p.pause()
                 } else {
@@ -77,12 +76,12 @@ class Player : NSObject, AVAudioPlayerDelegate {
                 p.pause()
                 
                 p.currentTime = e.positionTime
+                self.updateNowPlaying()
                 p.play()
                 return .success
             }
             return .commandFailed
         }
-        MPRemoteCommandCenter.shared().nextTrackCommand.isEnabled = self._queue.count > 1
         
         MPRemoteCommandCenter.shared().previousTrackCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
             if let p = self.musicPlayer {
@@ -145,8 +144,6 @@ class Player : NSObject, AVAudioPlayerDelegate {
     }
     
     private func updateNowPlaying(){
-        MPRemoteCommandCenter.shared().nextTrackCommand.isEnabled = self._queue.count > 1
-
         if let curr = self.currentIndex {
             let song = self._queue[curr]
 
