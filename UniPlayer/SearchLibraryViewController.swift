@@ -32,6 +32,7 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
         self.searchController.searchResultsUpdater = self
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = "Search Music Library"
+        self.searchController.hidesNavigationBarDuringPresentation = false
         self.navigationItem.searchController = self.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.definesPresentationContext = true
