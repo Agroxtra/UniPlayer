@@ -65,8 +65,12 @@ class Playlist : Equatable {
     }
     
     func addSong(song: Song){
-        _list.append(song)
-        MusicLibrary.savePlaylists()
+        if let _ = _list.firstIndex(of: song) {
+            print("Playlist \(self.name) already contains Song \(song.title)\n It will not be added again!")
+        } else {
+            _list.append(song)
+            MusicLibrary.savePlaylists()
+        }
     }
     
     func removeSong(song: Song){
