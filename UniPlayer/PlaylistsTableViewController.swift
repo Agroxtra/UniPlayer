@@ -27,6 +27,7 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playlistCell") ?? UITableViewCell(style: .default, reuseIdentifier: "playlistCell")
         cell.textLabel?.text = MusicLibrary.playlists[indexPath.row].name
+        cell.imageView?.image = MusicLibrary.playlists[indexPath.row].image
         return cell
     }
     

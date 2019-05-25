@@ -10,7 +10,6 @@ import UIKit
 
 class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     // TODO: add support for mulitple sources
-    // TODO: add search
     
     @IBOutlet weak var tableView: UITableView!
     public var playlistIndex: Int!
@@ -41,7 +40,6 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.isFiltered {
-            print("isFiltered")
             return self.filteredContent.count
         }
         
