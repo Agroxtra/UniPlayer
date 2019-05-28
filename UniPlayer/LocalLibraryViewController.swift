@@ -29,11 +29,6 @@ class LocalLibraryViewController: UIViewController, UITableViewDelegate, UITable
         // Do any additional setup after loading the view.
         
         self.tableView.tableFooterView = UIView()
-        
-//        if !MusicLibrary.isLoaded {
-//            MusicLibrary.load()
-//            self.tableView.reloadData()
-//        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,15 +43,6 @@ class LocalLibraryViewController: UIViewController, UITableViewDelegate, UITable
         
         
         cell.imageView?.image = Utilities.createArtworkBorder(for: song, imgView: cell.imageView)
-//        cell.imageView?.image = Utilities.addBorder(for: MusicLibrary.library[indexPath.row].getArtwork(size: CGSize(width: 200, height: 200)), imageView: cell.imageView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
-        
-        /*if let c = MusicLibrary.player.currentIndex,
-            indexPath.row == c
-        {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }*/
         return cell
     }
     
@@ -69,15 +55,6 @@ class LocalLibraryViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func didUpdate() {
-        /*if let c = MusicLibrary.player.currentIndex,
-            self.tableView != nil
-        {
-            DispatchQueue.main.async {
-                for cell in self.tableView.visibleCells {
-                    cell.accessoryType = .none
-                }
-                self.tableView.cellForRow(at: IndexPath(row: c, section: 0))?.accessoryType = .checkmark
-            }
-        }*/
+        
     }
 }

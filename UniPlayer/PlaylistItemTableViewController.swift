@@ -18,7 +18,6 @@ class PlaylistItemTableViewController : UITableViewController {
                 self.tableView.reloadData()
             }
         }
-        
     }
     
     override func viewDidLoad() {
@@ -66,11 +65,6 @@ class PlaylistItemTableViewController : UITableViewController {
     @objc
     private func addButtonPressed(_ sender: UIBarButtonItem) {
         DispatchQueue.main.async {
-            /*let alert = UIAlertController(title: "Add Song", message: "This method is not implemented yet", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok…", style: .default, handler: { (_) in
-                alert.dismiss(animated: true, completion: nil)
-            }))
-            self.present(alert, animated: true, completion: nil)*/
             guard let nvc = self.storyboard?.instantiateViewController(withIdentifier: "addSongVC") as? UINavigationController,
                 let rootVC = nvc.viewControllers.first as? SearchLibraryViewController else
             {
