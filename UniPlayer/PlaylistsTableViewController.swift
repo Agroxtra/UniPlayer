@@ -30,8 +30,11 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playlistCell") ?? UITableViewCell(style: .default, reuseIdentifier: "playlistCell")
-        cell.textLabel?.text = MusicLibrary.playlists[indexPath.row].name
-        cell.imageView?.image = Utilities.createArtworkBorder(for: MusicLibrary.playlists[indexPath.row].image, imgView: cell.imageView)
+        let playlist = MusicLibrary.playlists[indexPath.row]
+        cell.textLabel?.text = playlist.name
+        cell.imageView?.image = Utilities.createArtworkBorder(for: playlist.image, imgView: cell.imageView)
+        cell.detailTextLabel?.text = "\(playlist.list.count) Song\(playlist.list.count > 1 ? "s" : "")"
+        
         return cell
     }
     
