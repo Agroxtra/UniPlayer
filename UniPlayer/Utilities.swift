@@ -24,7 +24,7 @@ extension UIColor {
 
 
 class Utilities {
-    public static  func createIcon(for image: UIImage, imageView: UIImageView, background color: UIColor, imgFactor: CGFloat = 0.6, cornerRadius: CGFloat = 7) -> UIImage {
+    public static  func addBorder(for image: UIImage, imageView: UIImageView, background color: UIColor, imgFactor: CGFloat = 0.6, cornerRadius: CGFloat = 7) -> UIImage {
         
         let sizeImg = imageView.bounds.height * imgFactor
         let size = imageView.bounds.height/* * 0.7*/
@@ -47,6 +47,14 @@ class Utilities {
         UIGraphicsEndImageContext()
         
         return img
+    }
+    
+    public static func createArtworkBorder(for song: Song, imgView: UIImageView?) -> UIImage{
+        return Utilities.addBorder(for: song.getArtwork(size: CGSize(width: 200, height: 200)), imageView: imgView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
+    }
+    
+    public static func createArtworkBorder(for image: UIImage, imgView: UIImageView?) -> UIImage{
+        return Utilities.addBorder(for: image, imageView: imgView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
     }
     
     public static func convertStringToDictionary(text: String) -> [String:AnyObject]? {

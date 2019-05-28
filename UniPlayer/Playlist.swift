@@ -12,51 +12,7 @@ class Playlist : Equatable {
     private var _list: [Song] = []
     public var name: String
     public var lastPlayed: Date
-    public lazy var image : UIImage = {
-        [unowned self] in
-        if self._list.count > 0 {
-            if self._list.count < 4 {
-                let firstWithImg = self._list.filter({ (song) -> Bool in
-                    return song.artwork != nil
-                }).first?.artwork
-                
-                if let img = firstWithImg {
-                    return img
-                }
-            } else {
-                let img1 = self._list.first!.artwork ?? UIImage(named: "musicnote")!
-                let img2 = self._list[1].artwork ?? UIImage(named: "musicnote")!
-                let img3 = self._list[2].artwork ?? UIImage(named: "musicnote")!
-                let img4 = self._list[3].artwork ?? UIImage(named: "musicnote")!
-                let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 400, height: 400)))
-                let imgView1 = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
-                imgView1.contentMode = .scaleAspectFit
-                imgView1.image = img1
-                view.addSubview(imgView1)
-                let imgView2 = UIImageView(frame: CGRect(origin: CGPoint(x: 200, y: 0), size: CGSize(width: 200, height: 200)))
-                imgView2.contentMode = .scaleAspectFit
-                imgView2.image = img2
-                view.addSubview(imgView2)
-                let imgView3 = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 200), size: CGSize(width: 200, height: 200)))
-                imgView3.contentMode = .scaleAspectFit
-                imgView3.image = img3
-                view.addSubview(imgView3)
-                let imgView4 = UIImageView(frame: CGRect(origin: CGPoint(x: 200, y: 200), size: CGSize(width: 200, height: 200)))
-                imgView4.contentMode = .scaleAspectFit
-                imgView4.image = img4
-                view.addSubview(imgView4)
-                
-                UIGraphicsBeginImageContext(view.bounds.size)
-                view.draw(view.bounds)
-                let image = UIGraphicsGetImageFromCurrentImageContext()
-                
-                UIGraphicsEndImageContext()
-                
-                return image ?? UIImage(named: "musicnote")!
-            }
-        }
-        return UIImage(named: "musicnote")!
-    }()
+    public lazy var image : UIImage = self.createArtwork()
     
     init(name: String){
         self.name = name
@@ -115,6 +71,9 @@ class Playlist : Equatable {
         } else {
             _list.append(song)
             MusicLibrary.savePlaylists()
+            
+            //MARK: update artwork
+            self.image = self.createArtwork()
         }
     }
     
@@ -123,11 +82,17 @@ class Playlist : Equatable {
             _list.remove(at: i)
         }
         MusicLibrary.savePlaylists()
+        
+        // MARK: update artwork
+        self.image = self.createArtwork()
     }
     
     func removeSong(atIndex: Int){
         _list.remove(at: atIndex)
         MusicLibrary.savePlaylists()
+        
+        // MARK: update artwork
+        self.image = self.createArtwork()
     }
     
     func savePlaylist() -> [String:AnyObject]{
@@ -150,6 +115,51 @@ class Playlist : Equatable {
     
     static func ==(lhs: Playlist, rhs: Playlist) -> Bool{
         return lhs.name == rhs.name
+    }
+    
+    private func createArtwork() -> UIImage {
+        if self._list.count > 0 {
+            if self._list.count < 4 {
+                let firstWithImg = self._list.filter({ (song) -> Bool in
+                    return song.artwork != nil
+                }).first?.artwork
+                
+                if let img = firstWithImg {
+                    return img
+                }
+            } else {
+                let img1 = self._list.first!.artwork ?? UIImage(named: "musicnote")!
+                let img2 = self._list[1].artwork ?? UIImage(named: "musicnote")!
+                let img3 = self._list[2].artwork ?? UIImage(named: "musicnote")!
+                let img4 = self._list[3].artwork ?? UIImage(named: "musicnote")!
+                let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 400, height: 400)))
+                let imgView1 = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
+                imgView1.contentMode = .scaleAspectFit
+                imgView1.image = Utilities.addBorder(for: img1, imageView: imgView1, background: .white)
+                view.addSubview(imgView1)
+                let imgView2 = UIImageView(frame: CGRect(origin: CGPoint(x: 200, y: 0), size: CGSize(width: 200, height: 200)))
+                imgView2.contentMode = .scaleAspectFit
+                imgView2.image = img2
+                view.addSubview(imgView2)
+                let imgView3 = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 200), size: CGSize(width: 200, height: 200)))
+                imgView3.contentMode = .scaleAspectFit
+                imgView3.image = img3
+                view.addSubview(imgView3)
+                let imgView4 = UIImageView(frame: CGRect(origin: CGPoint(x: 200, y: 200), size: CGSize(width: 200, height: 200)))
+                imgView4.contentMode = .scaleAspectFit
+                imgView4.image = img4
+                view.addSubview(imgView4)
+                
+                UIGraphicsBeginImageContext(view.bounds.size)
+                view.draw(view.bounds)
+                let image = UIGraphicsGetImageFromCurrentImageContext()
+                
+                UIGraphicsEndImageContext()
+                
+                return image ?? UIImage(named: "musicnote")!
+            }
+        }
+        return UIImage(named: "musicnote")!
     }
     
 }

@@ -17,7 +17,11 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        MusicLibrary.player.delegate = self
+        DispatchQueue.main.async {
+            if self.tableView != nil {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,7 +31,7 @@ class PlaylistsTableViewController : UITableViewController, PlayerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playlistCell") ?? UITableViewCell(style: .default, reuseIdentifier: "playlistCell")
         cell.textLabel?.text = MusicLibrary.playlists[indexPath.row].name
-        cell.imageView?.image = MusicLibrary.playlists[indexPath.row].image
+        cell.imageView?.image = Utilities.createArtworkBorder(for: MusicLibrary.playlists[indexPath.row].image, imgView: cell.imageView)
         return cell
     }
     

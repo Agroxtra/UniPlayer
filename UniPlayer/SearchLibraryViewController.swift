@@ -59,8 +59,8 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
         cell.textLabel?.text = song.title
         cell.detailTextLabel?.text = song.artist
         
-        
-        cell.imageView?.image = Utilities.createIcon(for: song.getArtwork(size: CGSize(width: 200, height: 200)), imageView: cell.imageView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
+        cell.imageView?.image = Utilities.createArtworkBorder(for: song, imgView: cell.imageView)
+//        cell.imageView?.image = Utilities.addBorder(for: song.getArtwork(size: CGSize(width: 200, height: 200)), imageView: cell.imageView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
         
         if let _ = self.songsToAdd.firstIndex(of: song) {
             cell.accessoryType = .checkmark

@@ -42,11 +42,13 @@ class LocalLibraryViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "musicCell")
-        cell.textLabel?.text = MusicLibrary.library[indexPath.row].title
-        cell.detailTextLabel?.text = MusicLibrary.library[indexPath.row].artist
+        let song = MusicLibrary.library[indexPath.row]
+        cell.textLabel?.text = song.title
+        cell.detailTextLabel?.text = song.artist
         
         
-        cell.imageView?.image = Utilities.createIcon(for: MusicLibrary.library[indexPath.row].getArtwork(size: CGSize(width: 200, height: 200)), imageView: cell.imageView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
+        cell.imageView?.image = Utilities.createArtworkBorder(for: song, imgView: cell.imageView)
+//        cell.imageView?.image = Utilities.addBorder(for: MusicLibrary.library[indexPath.row].getArtwork(size: CGSize(width: 200, height: 200)), imageView: cell.imageView ?? UIImageView(), background: .clear, imgFactor: 0.95, cornerRadius: 10)
         
         /*if let c = MusicLibrary.player.currentIndex,
             indexPath.row == c
