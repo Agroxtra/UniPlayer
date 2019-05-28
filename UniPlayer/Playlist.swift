@@ -128,14 +128,14 @@ class Playlist : Equatable {
                     return img
                 }
             } else {
-                let img1 = self._list.first!.artwork ?? UIImage(named: "musicnote")!
-                let img2 = self._list[1].artwork ?? UIImage(named: "musicnote")!
-                let img3 = self._list[2].artwork ?? UIImage(named: "musicnote")!
-                let img4 = self._list[3].artwork ?? UIImage(named: "musicnote")!
+                let img1 = self._list.first!.getArtwork()
+                let img2 = self._list[1].getArtwork()
+                let img3 = self._list[2].getArtwork()
+                let img4 = self._list[3].getArtwork()
                 let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 400, height: 400)))
                 let imgView1 = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
                 imgView1.contentMode = .scaleAspectFit
-                imgView1.image = Utilities.addBorder(for: img1, imageView: imgView1, background: .white)
+                imgView1.image = img1
                 view.addSubview(imgView1)
                 let imgView2 = UIImageView(frame: CGRect(origin: CGPoint(x: 200, y: 0), size: CGSize(width: 200, height: 200)))
                 imgView2.contentMode = .scaleAspectFit
@@ -151,7 +151,7 @@ class Playlist : Equatable {
                 view.addSubview(imgView4)
                 
                 UIGraphicsBeginImageContext(view.bounds.size)
-                view.draw(view.bounds)
+                view.layer.render(in: UIGraphicsGetCurrentContext()!)
                 let image = UIGraphicsGetImageFromCurrentImageContext()
                 
                 UIGraphicsEndImageContext()
