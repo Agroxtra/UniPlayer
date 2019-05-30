@@ -10,7 +10,7 @@ import Foundation
 
 class YoutubeSearch {
     
-    func search(searchString: String, completion: @escaping (_ items: [YoutubeSearchItem]) -> Void){
+    public static func search(searchString: String, completion: @escaping (_ items: [YoutubeSearchItem]) -> Void){
         var urlcomps = URLComponents(string: "https://www.googleapis.com/youtube/v3/search")
         let queryItems = [URLQueryItem(name: "part", value: "snippet"),
                           URLQueryItem(name: "q", value: searchString),
