@@ -32,3 +32,5 @@ Pods/
 # Carthage
 Carthage/Checkouts
 Carthage/Build
+
+UniPlayer/YouTubeAPIKey.swift
