@@ -12,6 +12,7 @@ class Playlist : Equatable {
     private var _list: [Song] = []
     public var name: String
     public var lastPlayed: Date
+    private var youtubeDownloader = YoutubeDownloader()
     public lazy var image : UIImage = self.createArtwork()
     
     init(name: String){
@@ -160,6 +161,12 @@ class Playlist : Equatable {
             }
         }
         return UIImage(named: "musicnote")!
+    }
+    
+    func addSong(youtubeId: String) {
+        youtubeDownloader.download(id: youtubeId) { (file) in
+            self.addSong(song: Song(path: file))
+        }
     }
     
 }
