@@ -31,6 +31,7 @@ class Utilities {
         let imgView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: sizeImg, height: sizeImg)))
         imgView.layer.masksToBounds = true
         imgView.layer.cornerRadius = cornerRadius
+        imgView.contentMode = .scaleAspectFill
         let v = UIView(frame: CGRect(origin: .zero, size: CGSize(width: size, height: size)))
         v.addSubview(imgView)
 //        v.layer.masksToBounds = true

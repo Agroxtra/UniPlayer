@@ -17,6 +17,11 @@ class YoutubeDownloader : NSObject, WKNavigationDelegate {
     func download(id: String, completion: @escaping (_ file: URL)->Void) {
         self.completion = completion
         self.id = id
+        if FileManager.default.isReadableFile(atPath: AppFile().songsDirectoryURL().path + "/\(id).mp3") {
+            completion(AppFile().songsDirectoryURL().appendingPathComponent(id).appendingPathExtension("mp3"))
+            return
+        }
+        
         
         self.web = WKWebView(frame: .zero)
         self.web?.navigationDelegate = self
