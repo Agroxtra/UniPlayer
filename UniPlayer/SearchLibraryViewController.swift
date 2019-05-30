@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
+class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     // TODO: add support for mulitple sources
     
     @IBOutlet weak var tableView: UITableView!
@@ -33,6 +33,7 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = "Search Music Library"
         self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.delegate = self
         self.navigationItem.searchController = self.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.definesPresentationContext = true
@@ -97,26 +98,30 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
-    @IBAction func doneButtonPressed(_ sender: Any) {
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
 //        self.songsToAdd.forEach { (song) in
 //            if song
 //            MusicLibrary.playlists[self.playlistIndex].addSong(song: )
 //        }
-        var numberOfYoutube = 1
+        sender.isEnabled = false
+        var numberOfSongs = songsToAdd.count
         let completion: ()->Void = {
-            numberOfYoutube -= 1
-            if numberOfYoutube == 0 {
+            if numberOfSongs == 0 {
+                
                 DispatchQueue.main.async {
+                    sender.isEnabled = true
                     self.navigationController?.dismiss(animated: true, completion: nil)
                 }
             }
+            numberOfSongs -= 1
+
         }
         for searchItem in songsToAdd {
             if let localSearchItem = searchItem as? LocalSearchItem {
                 MusicLibrary.playlists[self.playlistIndex].addSong(song: localSearchItem.getSong())
+                completion()
             } else if let youtubeSearchItem = searchItem as? YoutubeSearchItem {
                 MusicLibrary.playlists[self.playlistIndex].addSong(youtubeId: youtubeSearchItem.fileName, completion: completion)
-                numberOfYoutube += 1
             }
         }
         
@@ -134,16 +139,19 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
             }).filter({ (searchItem) -> Bool in
                 return (searchItem as! LocalSearchItem).conformsToSearch(for: searchText)
             })
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchController.searchBar.text {
             YoutubeSearch.search(searchString: searchText) { (items) in
                 self.filteredContent.append(contentsOf: items)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-            }
-            print("filtered content: ")
-            print(self.filteredContent)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
             }
         }
     }

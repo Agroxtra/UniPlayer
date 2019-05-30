@@ -18,7 +18,6 @@ class YoutubeSearch {
                           URLQueryItem(name: "key", value: YouTubeAPIKey.key)]
         urlcomps?.queryItems = queryItems
         let url: URL = urlcomps!.url!
-        print(url.absoluteString)
         
         let session = URLSession.shared
         let req = session.dataTask(with: url){data, resp, error in
@@ -40,6 +39,8 @@ class YoutubeSearch {
                     }
                     completion(ytsearchitems)
                 }
+            } else {
+                print(String(data: data!, encoding: .utf8) ?? "no string")
             }
         }
         req.resume()
