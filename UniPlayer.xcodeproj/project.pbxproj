@@ -16,6 +16,7 @@
 		5B67E0FC2290342900932B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B67E0FB2290342900932B7C /* Assets.xcassets */; };
 		5B67E0FF2290342900932B7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B67E0FD2290342900932B7C /* LaunchScreen.storyboard */; };
 		5BA0882322A0032D0089FD9A /* YoutubeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0882222A0032D0089FD9A /* YoutubeDownloader.swift */; };
+		5BA0882522A0553D0089FD9A /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0882422A0553D0089FD9A /* SearchItems.swift */; };
 		5BB0060A22946D1E00CB211B /* PlaylistsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0060922946D1E00CB211B /* PlaylistsTableViewController.swift */; };
 		5BB0060C2294743300CB211B /* PlaylistItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0060B2294743300CB211B /* PlaylistItemTableViewController.swift */; };
 		5BB006102295BDA400CB211B /* SearchLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0060F2295BDA400CB211B /* SearchLibraryViewController.swift */; };
@@ -38,6 +39,7 @@
 		5B67E0FE2290342900932B7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B67E1002290342900932B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BA0882222A0032D0089FD9A /* YoutubeDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeDownloader.swift; sourceTree = "<group>"; };
+		5BA0882422A0553D0089FD9A /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
 		5BB0060922946D1E00CB211B /* PlaylistsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsTableViewController.swift; sourceTree = "<group>"; };
 		5BB0060B2294743300CB211B /* PlaylistItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemTableViewController.swift; sourceTree = "<group>"; };
 		5BB0060F2295BDA400CB211B /* SearchLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLibraryViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				5BB0060922946D1E00CB211B /* PlaylistsTableViewController.swift */,
 				5BB0060B2294743300CB211B /* PlaylistItemTableViewController.swift */,
 				5BB0060F2295BDA400CB211B /* SearchLibraryViewController.swift */,
+				5BA0882422A0553D0089FD9A /* SearchItems.swift */,
 				5BA0882222A0032D0089FD9A /* YoutubeDownloader.swift */,
 			);
 			path = UniPlayer;
@@ -185,6 +188,7 @@
 				5B67E0F42290342700932B7C /* LocalLibraryViewController.swift in Sources */,
 				5B67E0FA2290342700932B7C /* MusicPlayer.xcdatamodeld in Sources */,
 				5BA0882322A0032D0089FD9A /* YoutubeDownloader.swift in Sources */,
+				5BA0882522A0553D0089FD9A /* SearchItems.swift in Sources */,
 				5B01BE8422932BC80017E8FD /* Player.swift in Sources */,
 				5BD4190222917BB500533FB5 /* MusicLibrary.swift in Sources */,
 				5B67E0F22290342700932B7C /* AppDelegate.swift in Sources */,
@@ -338,7 +342,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37V24BBCXL;
+				DEVELOPMENT_TEAM = GMZW8X4D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/UniPlayer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -356,7 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37V24BBCXL;
+				DEVELOPMENT_TEAM = GMZW8X4D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/UniPlayer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -20,9 +20,10 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    private var filteredContent = [Song]()
+    private var filteredContent = [SearchItem]()
     
-    private var songsToAdd = [Song]()
+    private var songsToAdd = [SearchItem]()
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -48,70 +49,90 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
             return self.filteredContent.count
         }
         
-        return MusicLibrary.library.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "musicCell")
         
-        let song : Song
         if self.isFiltered {
-            song = self.filteredContent[indexPath.row]
-        } else {
-            song = MusicLibrary.library[indexPath.row]
+            let searchItem : SearchItem
+
+            searchItem = self.filteredContent[indexPath.row]
+            cell.textLabel?.text = searchItem.title
+            //        cell.detailTextLabel?.text = song.artist
+            
+            //        cell.imageView?.image = Utilities.createArtworkBorder(for: song, imgView: cell.imageView)
+            
+            if let _ = self.songsToAdd.firstIndex(of: searchItem) {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
         }
         
-        cell.textLabel?.text = song.title
-        cell.detailTextLabel?.text = song.artist
         
-        cell.imageView?.image = Utilities.createArtworkBorder(for: song, imgView: cell.imageView)
-        
-        if let _ = self.songsToAdd.firstIndex(of: song) {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
     
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let song : Song
+        let searchItem : SearchItem
         if self.isFiltered {
-            song = self.filteredContent[indexPath.row]
-        } else {
-            song = MusicLibrary.library[indexPath.row]
-        }
-        if let i = self.songsToAdd.firstIndex(of: song) {
-            self.songsToAdd.remove(at: i)
-            DispatchQueue.main.async {
-                tableView.cellForRow(at: indexPath)?.accessoryType = .none
-            }
-        } else {
-            self.songsToAdd.append(song)
-            DispatchQueue.main.async {
-                tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            searchItem = self.filteredContent[indexPath.row]
+            if let i = self.songsToAdd.firstIndex(of: searchItem) {
+                self.songsToAdd.remove(at: i)
+                DispatchQueue.main.async {
+                    tableView.cellForRow(at: indexPath)?.accessoryType = .none
+                }
+            } else {
+                self.songsToAdd.append(searchItem)
+                DispatchQueue.main.async {
+                    tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+                }
             }
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
     @IBAction func doneButtonPressed(_ sender: Any) {
-        self.songsToAdd.forEach { (song) in
-            MusicLibrary.playlists[self.playlistIndex].addSong(song: song)
+//        self.songsToAdd.forEach { (song) in
+//            if song
+//            MusicLibrary.playlists[self.playlistIndex].addSong(song: )
+//        }
+        var numberOfYoutube = 1
+        let completion: ()->Void = {
+            numberOfYoutube -= 1
+            if numberOfYoutube == 0 {
+                DispatchQueue.main.async {
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+        for searchItem in songsToAdd {
+            if let localSearchItem = searchItem as? LocalSearchItem {
+                MusicLibrary.playlists[self.playlistIndex].addSong(song: localSearchItem.getSong())
+            } else if let youtubeSearchItem = searchItem as? YoutubeSearchItem {
+                MusicLibrary.playlists[self.playlistIndex].addSong(youtubeId: youtubeSearchItem.fileName, completion: completion)
+                numberOfYoutube += 1
+            }
         }
         
-        DispatchQueue.main.async {
-             self.navigationController?.dismiss(animated: true, completion: nil)
-        }
+        completion()
+        
+        
        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
+        
         if let searchText = searchController.searchBar.text {
-            self.filteredContent = MusicLibrary.library.filter({ (song) -> Bool in
-                return song.title.lowercased().contains(searchText.lowercased())
+            self.filteredContent = MusicLibrary.library.map({ (song) -> SearchItem in
+                return LocalSearchItem(title: song.title, fileName: song.url.lastPathComponent.replacingOccurrences(of: ".mp3", with: ""))
+            }).filter({ (searchItem) -> Bool in
+                return (searchItem as! LocalSearchItem).conformsToSearch(for: searchText)
             })
             print("filtered content: ")
             print(self.filteredContent)
