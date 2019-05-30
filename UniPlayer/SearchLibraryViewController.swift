@@ -37,6 +37,11 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
         self.definesPresentationContext = true
     }
     
+    @IBAction func testBtnPressed(_ sender: Any) {
+        MusicLibrary.playlists[self.playlistIndex].addSong(youtubeId: "dQw4w9WgXcQ", completion: {
+            print("ready")
+        })
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.isFiltered {

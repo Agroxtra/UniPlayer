@@ -163,9 +163,10 @@ class Playlist : Equatable {
         return UIImage(named: "musicnote")!
     }
     
-    func addSong(youtubeId: String) {
+    func addSong(youtubeId: String, completion: @escaping ()->Void) {
         youtubeDownloader.download(id: youtubeId) { (file) in
             self.addSong(song: Song(path: file))
+            completion()
         }
     }
     

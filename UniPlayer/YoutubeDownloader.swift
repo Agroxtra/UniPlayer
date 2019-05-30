@@ -12,17 +12,20 @@ import WebKit
 class YoutubeDownloader : NSObject, WKNavigationDelegate {
     private var completion : ((_ file: URL) -> Void)?
     private var id: String = ""
+    private var web : WKWebView?
     
     func download(id: String, completion: @escaping (_ file: URL)->Void) {
         self.completion = completion
         self.id = id
         
-        let web = WKWebView(frame: .zero)
-        web.navigationDelegate = self
-        web.load(URLRequest(url: URL(string: "https://convertmp3.io/widget/button/?video=https://www.youtube.com/watch?v=\(id)&format=mp3&text=ffffff&color=3880f3")!))
+        self.web = WKWebView(frame: .zero)
+        self.web?.navigationDelegate = self
+        self.web?.load(URLRequest(url: URL(string: "https://convertmp3.io/widget/button/?video=https://www.youtube.com/watch?v=\(id)&format=mp3&text=ffffff&color=3880f3")!))
+        
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("webview loaded")
         webView.evaluateJavaScript("document.getElementById(\"downloadButton\").href;") { (result, error) in
             if let error = error {
                 print(error)
@@ -37,10 +40,11 @@ class YoutubeDownloader : NSObject, WKNavigationDelegate {
                         resp.statusCode == 200,
                         let data = data
                     {
-                        var path = AppFile().libraryDirectoryURL()
+                        var path = AppFile().songsDirectoryURL()
                         path.appendPathComponent(self.id)
                         path.appendPathExtension("mp3")
-                        FileManager().createFile(atPath: path.absoluteString, contents: data, attributes: nil)
+                        print(path.absoluteString)
+                        FileManager.default.createFile(atPath: path.path, contents: data, attributes: nil)
                         self.completion?(path)
                     }
                 }

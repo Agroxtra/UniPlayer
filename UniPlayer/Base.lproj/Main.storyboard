@@ -368,11 +368,18 @@
                         <viewLayoutGuide key="safeArea" id="Egp-bW-aaY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Song" id="yCe-J7-i43">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Tr4-7r-bDg">
-                            <connections>
-                                <action selector="doneButtonPressed:" destination="6rk-c4-ztM" id="dbl-sd-UkL"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="done" id="Tr4-7r-bDg">
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="6rk-c4-ztM" id="dbl-sd-UkL"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Test" id="Dmx-Iz-xum">
+                                <connections>
+                                    <action selector="testBtnPressed:" destination="6rk-c4-ztM" id="KG3-XP-3gE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="NpJ-Hv-VrZ" id="MM4-7B-D47"/>
