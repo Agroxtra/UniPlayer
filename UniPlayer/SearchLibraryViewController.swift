@@ -134,6 +134,12 @@ class SearchLibraryViewController: UIViewController, UITableViewDataSource, UITa
             }).filter({ (searchItem) -> Bool in
                 return (searchItem as! LocalSearchItem).conformsToSearch(for: searchText)
             })
+            YoutubeSearch.search(searchString: searchText) { (items) in
+                self.filteredContent.append(contentsOf: items)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
             print("filtered content: ")
             print(self.filteredContent)
             DispatchQueue.main.async {
