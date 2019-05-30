@@ -51,7 +51,7 @@ class MusicLibrary {
         _ = AppFile().writeFile(containing: "This directory contains configuration of your playlists. Do NOT modify the file unless you know what you are doing!", to: .Playlists, withName: "DO_NOT_MODIFY.txt")
         if !FileManager.default.fileExists(atPath: AppFile().playlistsDirectoryURL().path + "/playlists.json") {
             
-            AppFile().writeFile(containing: "{\"playlists\": []}", to: .Playlists, withName: "playlists.json")
+            _ = AppFile().writeFile(containing: "{\"playlists\": []}", to: .Playlists, withName: "playlists.json")
         }
         
         MusicLibrary.playlists.removeAll()
