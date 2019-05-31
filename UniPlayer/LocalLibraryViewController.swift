@@ -29,6 +29,7 @@ class LocalLibraryViewController: UIViewController, UITableViewDelegate, UITable
         // Do any additional setup after loading the view.
         
         self.tableView.tableFooterView = UIView()
+        print(self.view.bounds.size)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

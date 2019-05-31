@@ -21,6 +21,7 @@
 		5BB0060A22946D1E00CB211B /* PlaylistsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0060922946D1E00CB211B /* PlaylistsTableViewController.swift */; };
 		5BB0060C2294743300CB211B /* PlaylistItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0060B2294743300CB211B /* PlaylistItemTableViewController.swift */; };
 		5BB006102295BDA400CB211B /* SearchLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0060F2295BDA400CB211B /* SearchLibraryViewController.swift */; };
+		5BB9E0F422A10F2600E47187 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9E0F322A10F2600E47187 /* MainTabBarController.swift */; };
 		5BD419002291716F00533FB5 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD418FF2291716F00533FB5 /* FileSystemManager.swift */; };
 		5BD4190222917BB500533FB5 /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD4190122917BB500533FB5 /* MusicLibrary.swift */; };
 		801C311922A04D92000CD336 /* YoutubeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C311822A04D92000CD336 /* YoutubeSearch.swift */; };
@@ -44,6 +45,7 @@
 		5BB0060922946D1E00CB211B /* PlaylistsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsTableViewController.swift; sourceTree = "<group>"; };
 		5BB0060B2294743300CB211B /* PlaylistItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemTableViewController.swift; sourceTree = "<group>"; };
 		5BB0060F2295BDA400CB211B /* SearchLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLibraryViewController.swift; sourceTree = "<group>"; };
+		5BB9E0F322A10F2600E47187 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5BD418FF2291716F00533FB5 /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		5BD4190122917BB500533FB5 /* MusicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
 		801C311822A04D92000CD336 /* YoutubeSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearch.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				5BB0060F2295BDA400CB211B /* SearchLibraryViewController.swift */,
 				5BA0882422A0553D0089FD9A /* SearchItems.swift */,
 				5BA0882222A0032D0089FD9A /* YoutubeDownloader.swift */,
+				5BB9E0F322A10F2600E47187 /* MainTabBarController.swift */,
 			);
 			path = UniPlayer;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				5BA0882322A0032D0089FD9A /* YoutubeDownloader.swift in Sources */,
 				5BA0882522A0553D0089FD9A /* SearchItems.swift in Sources */,
 				5B01BE8422932BC80017E8FD /* Player.swift in Sources */,
+				5BB9E0F422A10F2600E47187 /* MainTabBarController.swift in Sources */,
 				5BD4190222917BB500533FB5 /* MusicLibrary.swift in Sources */,
 				5B67E0F22290342700932B7C /* AppDelegate.swift in Sources */,
 				803EB78522930938006E6231 /* Playlist.swift in Sources */,
